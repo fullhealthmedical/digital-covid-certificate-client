@@ -29,7 +29,7 @@ instance = DigitalCovidCertificateClient::QRVaccine.new(
   sd: 2,
   dt: Mon Jun 14 01:00:00 IST 2021,
   co: IE,
-  is: Government of Ireland,
+  is: Department of Health,
   ci: IE:123:TBA
 )
 ```

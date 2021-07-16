@@ -15,3 +15,4 @@ instance = DigitalCovidCertificateClient::Message.new(
   message: null
 )
 ```
+

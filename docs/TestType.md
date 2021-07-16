@@ -1,4 +1,4 @@
-# DigitalCovidCertificateClient::VaccineMedicinalProduct
+# DigitalCovidCertificateClient::TestType
 
 ## Properties
 
@@ -10,6 +10,6 @@
 ```ruby
 require 'digital-covid-certificate-client'
 
-instance = DigitalCovidCertificateClient::VaccineMedicinalProduct.new()
+instance = DigitalCovidCertificateClient::TestType.new()
 ```
 

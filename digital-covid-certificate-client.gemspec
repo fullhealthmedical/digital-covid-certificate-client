@@ -13,7 +13,7 @@ OpenAPI Generator version: 5.1.1
 =end
 
 $:.push File.expand_path("../lib", __FILE__)
-require "digital_covid_certificate_client/version"
+require "digital-covid-certificate-client/version"
 
 Gem::Specification.new do |s|
   s.name        = "digital-covid-certificate-client"

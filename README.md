@@ -32,17 +32,13 @@ or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.or
 
 Finally add this to the Gemfile:
 
-```Ruby
-gem 'digital-covid-certificate-client', '~> 1.0.0'
-```
+    gem 'digital-covid-certificate-client', '~> 1.0.0'
 
 ### Install from Git
 
-If the Ruby gem is hosted at a git repository: <https://github.com/fullhealthmedical/digital-covid-certificate-client>, then add the following in the Gemfile:
+If the Ruby gem is hosted at a git repository: https://github.com/GIT_USER_ID/GIT_REPO_ID, then add the following in the Gemfile:
 
-```Ruby
-gem 'digital-covid-certificate-client', :git => 'https://github.com/fullhealthmedical/digital-covid-certificate-client.git'
-```
+    gem 'digital-covid-certificate-client', :git => 'https://github.com/GIT_USER_ID/GIT_REPO_ID.git'
 
 ### Include the Ruby code directly
 
@@ -62,57 +58,64 @@ require 'digital-covid-certificate-client'
 
 # Setup authorization
 DigitalCovidCertificateClient.configure do |config|
-  # Configure Bearer authorization: JWTBearer
+  # Configure Bearer authorization: Auth
   config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = DigitalCovidCertificateClient::DefaultApi.new
-recovery_qr_code = DigitalCovidCertificateClient::RecoveryQRCode.new({ver: '1.3.0', nam: DigitalCovidCertificateClient::QRName.new({fn: 'Murphy Gunne', gn: 'Joseph', fnt: 'MURPHY<GUNNE', gnt: 'JOSEPH'}), dob: '1979-04-13', r: [DigitalCovidCertificateClient::QRRecovery.new({fr: Date.parse('Mon Jun 14 01:00:00 IST 2021'), df: Date.parse('Mon Jun 14 01:00:00 IST 2021'), du: Date.parse('Mon Jun 14 01:00:00 IST 2021'), tg: DigitalCovidCertificateClient::DiseaseAgentTargeted::N840539006, co: DigitalCovidCertificateClient::CountryVt::AD, is: 'Government of Ireland', ci: 'IE:123:TBA'})]}) # RecoveryQRCode |
 
 begin
-  #Create Covid Recovery Certificate
-  result = api_instance.create_covid_recovery_certificate_covid_recovery_certificate_post(recovery_qr_code)
+  #Auth Check
+  result = api_instance.auth_check_auth_get
   p result
 rescue DigitalCovidCertificateClient::ApiError => e
-  puts "Exception when calling DefaultApi->create_covid_recovery_certificate_covid_recovery_certificate_post: #{e}"
+  puts "Exception when calling DefaultApi->auth_check_auth_get: #{e}"
 end
 
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.test.digitalcovidcertificates.gov.ie*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DigitalCovidCertificateClient::DefaultApi* | [**auth_check_auth_get**](docs/DefaultApi.md#auth_check_auth_get) | **GET** /auth | Auth Check
 *DigitalCovidCertificateClient::DefaultApi* | [**create_covid_recovery_certificate_covid_recovery_certificate_post**](docs/DefaultApi.md#create_covid_recovery_certificate_covid_recovery_certificate_post) | **POST** /covid-recovery-certificate/ | Create Covid Recovery Certificate
 *DigitalCovidCertificateClient::DefaultApi* | [**create_covid_vaccine_certificate_covid_vaccine_certificate_post**](docs/DefaultApi.md#create_covid_vaccine_certificate_covid_vaccine_certificate_post) | **POST** /covid-vaccine-certificate/ | Create Covid Vaccine Certificate
 *DigitalCovidCertificateClient::DefaultApi* | [**create_negative_covid_certificate_covid_test_certificate_post**](docs/DefaultApi.md#create_negative_covid_certificate_covid_test_certificate_post) | **POST** /covid-test-certificate/ | Create Negative Covid Certificate
 *DigitalCovidCertificateClient::DefaultApi* | [**health_check_health_check_get**](docs/DefaultApi.md#health_check_health_check_get) | **GET** /health-check/ | Health Check
 *DigitalCovidCertificateClient::DefaultApi* | [**login_for_access_token_token_post**](docs/DefaultApi.md#login_for_access_token_token_post) | **POST** /token/ | Login For Access Token
 
+
 ## Documentation for Models
 
-- [DigitalCovidCertificateClient::CertificateResponse](docs/CertificateResponse.md)
-- [DigitalCovidCertificateClient::CountryVt](docs/CountryVt.md)
-- [DigitalCovidCertificateClient::CreateTestCertificate](docs/CreateTestCertificate.md)
-- [DigitalCovidCertificateClient::DiseaseAgentTargeted](docs/DiseaseAgentTargeted.md)
-- [DigitalCovidCertificateClient::HC1CertificateResponse](docs/HC1CertificateResponse.md)
-- [DigitalCovidCertificateClient::HTTPValidationError](docs/HTTPValidationError.md)
-- [DigitalCovidCertificateClient::Message](docs/Message.md)
-- [DigitalCovidCertificateClient::QRName](docs/QRName.md)
-- [DigitalCovidCertificateClient::QRRecovery](docs/QRRecovery.md)
-- [DigitalCovidCertificateClient::QRVaccine](docs/QRVaccine.md)
-- [DigitalCovidCertificateClient::RecoveryQRCode](docs/RecoveryQRCode.md)
-- [DigitalCovidCertificateClient::Token](docs/Token.md)
-- [DigitalCovidCertificateClient::VaccineMahManf](docs/VaccineMahManf.md)
-- [DigitalCovidCertificateClient::VaccineMedicinalProduct](docs/VaccineMedicinalProduct.md)
-- [DigitalCovidCertificateClient::VaccineProphylaxis](docs/VaccineProphylaxis.md)
-- [DigitalCovidCertificateClient::VaccineQRCode](docs/VaccineQRCode.md)
-- [DigitalCovidCertificateClient::ValidationError](docs/ValidationError.md)
+ - [DigitalCovidCertificateClient::CertificateResponse](docs/CertificateResponse.md)
+ - [DigitalCovidCertificateClient::CountryVt](docs/CountryVt.md)
+ - [DigitalCovidCertificateClient::CreateTestCertificate](docs/CreateTestCertificate.md)
+ - [DigitalCovidCertificateClient::DiseaseAgentTargeted](docs/DiseaseAgentTargeted.md)
+ - [DigitalCovidCertificateClient::HC1CertificateResponse](docs/HC1CertificateResponse.md)
+ - [DigitalCovidCertificateClient::HTTPValidationError](docs/HTTPValidationError.md)
+ - [DigitalCovidCertificateClient::Message](docs/Message.md)
+ - [DigitalCovidCertificateClient::QRName](docs/QRName.md)
+ - [DigitalCovidCertificateClient::QRRecovery](docs/QRRecovery.md)
+ - [DigitalCovidCertificateClient::QRVaccine](docs/QRVaccine.md)
+ - [DigitalCovidCertificateClient::RecoveryQRCode](docs/RecoveryQRCode.md)
+ - [DigitalCovidCertificateClient::ResultEnum](docs/ResultEnum.md)
+ - [DigitalCovidCertificateClient::TestManf](docs/TestManf.md)
+ - [DigitalCovidCertificateClient::TestType](docs/TestType.md)
+ - [DigitalCovidCertificateClient::Token](docs/Token.md)
+ - [DigitalCovidCertificateClient::VaccineMahManf](docs/VaccineMahManf.md)
+ - [DigitalCovidCertificateClient::VaccineMedicinalProduct](docs/VaccineMedicinalProduct.md)
+ - [DigitalCovidCertificateClient::VaccineProphylaxis](docs/VaccineProphylaxis.md)
+ - [DigitalCovidCertificateClient::VaccineQRCode](docs/VaccineQRCode.md)
+ - [DigitalCovidCertificateClient::ValidationError](docs/ValidationError.md)
+
 
 ## Documentation for Authorization
 
-### JWTBearer
+
+### Auth
 
 - **Type**: Bearer authentication
+

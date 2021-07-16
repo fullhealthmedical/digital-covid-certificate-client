@@ -23,7 +23,8 @@ instance = DigitalCovidCertificateClient::QRRecovery.new(
   du: Mon Jun 14 01:00:00 IST 2021,
   tg: 840539006,
   co: IE,
-  is: Government of Ireland,
+  is: Department of Health,
   ci: IE:123:TBA
 )
 ```
+

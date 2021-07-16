@@ -27,6 +27,9 @@ module DigitalCovidCertificateClient
     # The type of test performed<table> <tr> <th>Code</th> <th>Name</th> </tr><tr><td>LP6464-4</td><td>Nucleic acid amplification with probe detection</td></tr><tr><td>LP217198-3</td><td>Rapid immunoassay</td></tr></table>
     attr_accessor :test_type
 
+    # Positivity result of the covid test
+    attr_accessor :test_result
+
     # NAA test name
     attr_accessor :naa_test_name
 
@@ -39,6 +42,9 @@ module DigitalCovidCertificateClient
     # Centre test was conducted
     attr_accessor :test_centre
 
+    # A unique ID refering to the sample on the service providers IT system, used for auditing generated certificates. This should only be provided once, subsequent requests with the same ID will be flagged for monitering.
+    attr_accessor :sample_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -46,10 +52,12 @@ module DigitalCovidCertificateClient
         :'forename' => :'forename',
         :'date_of_birth' => :'date_of_birth',
         :'test_type' => :'test_type',
+        :'test_result' => :'test_result',
         :'naa_test_name' => :'naa_test_name',
         :'test_manufacturer' => :'test_manufacturer',
         :'sample_collection_time' => :'sample_collection_time',
-        :'test_centre' => :'test_centre'
+        :'test_centre' => :'test_centre',
+        :'sample_id' => :'sample_id'
       }
     end
 
@@ -64,11 +72,13 @@ module DigitalCovidCertificateClient
         :'surname' => :'String',
         :'forename' => :'String',
         :'date_of_birth' => :'String',
-        :'test_type' => :'String',
+        :'test_type' => :'TestType',
+        :'test_result' => :'ResultEnum',
         :'naa_test_name' => :'String',
-        :'test_manufacturer' => :'String',
+        :'test_manufacturer' => :'TestManf',
         :'sample_collection_time' => :'Time',
-        :'test_centre' => :'String'
+        :'test_centre' => :'String',
+        :'sample_id' => :'String'
       }
     end
 
@@ -109,6 +119,10 @@ module DigitalCovidCertificateClient
         self.test_type = attributes[:'test_type']
       end
 
+      if attributes.key?(:'test_result')
+        self.test_result = attributes[:'test_result']
+      end
+
       if attributes.key?(:'naa_test_name')
         self.naa_test_name = attributes[:'naa_test_name']
       end
@@ -123,6 +137,10 @@ module DigitalCovidCertificateClient
 
       if attributes.key?(:'test_centre')
         self.test_centre = attributes[:'test_centre']
+      end
+
+      if attributes.key?(:'sample_id')
+        self.sample_id = attributes[:'sample_id']
       end
     end
 
@@ -151,24 +169,12 @@ module DigitalCovidCertificateClient
         invalid_properties.push('invalid value for "test_type", test_type cannot be nil.')
       end
 
-      if @test_type.to_s.length > 80
-        invalid_properties.push('invalid value for "test_type", the character length must be smaller than or equal to 80.')
+      if @test_result.nil?
+        invalid_properties.push('invalid value for "test_result", test_result cannot be nil.')
       end
 
-      if @naa_test_name.nil?
-        invalid_properties.push('invalid value for "naa_test_name", naa_test_name cannot be nil.')
-      end
-
-      if @naa_test_name.to_s.length > 80
+      if !@naa_test_name.nil? && @naa_test_name.to_s.length > 80
         invalid_properties.push('invalid value for "naa_test_name", the character length must be smaller than or equal to 80.')
-      end
-
-      if @test_manufacturer.nil?
-        invalid_properties.push('invalid value for "test_manufacturer", test_manufacturer cannot be nil.')
-      end
-
-      if @test_manufacturer.to_s.length > 80
-        invalid_properties.push('invalid value for "test_manufacturer", the character length must be smaller than or equal to 80.')
       end
 
       if @sample_collection_time.nil?
@@ -183,6 +189,18 @@ module DigitalCovidCertificateClient
         invalid_properties.push('invalid value for "test_centre", the character length must be smaller than or equal to 80.')
       end
 
+      if @sample_id.nil?
+        invalid_properties.push('invalid value for "sample_id", sample_id cannot be nil.')
+      end
+
+      if @sample_id.to_s.length > 50
+        invalid_properties.push('invalid value for "sample_id", the character length must be smaller than or equal to 50.')
+      end
+
+      if @sample_id.to_s.length < 1
+        invalid_properties.push('invalid value for "sample_id", the character length must be great than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -194,14 +212,14 @@ module DigitalCovidCertificateClient
       return false if @date_of_birth.nil?
       return false if @date_of_birth !~ Regexp.new(/^((19|20)\d\d(-\d\d){0,2}){0,1}$/)
       return false if @test_type.nil?
-      return false if @test_type.to_s.length > 80
-      return false if @naa_test_name.nil?
-      return false if @naa_test_name.to_s.length > 80
-      return false if @test_manufacturer.nil?
-      return false if @test_manufacturer.to_s.length > 80
+      return false if @test_result.nil?
+      return false if !@naa_test_name.nil? && @naa_test_name.to_s.length > 80
       return false if @sample_collection_time.nil?
       return false if @test_centre.nil?
       return false if @test_centre.to_s.length > 80
+      return false if @sample_id.nil?
+      return false if @sample_id.to_s.length > 50
+      return false if @sample_id.to_s.length < 1
       true
     end
 
@@ -221,45 +239,13 @@ module DigitalCovidCertificateClient
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] test_type Value to be assigned
-    def test_type=(test_type)
-      if test_type.nil?
-        fail ArgumentError, 'test_type cannot be nil'
-      end
-
-      if test_type.to_s.length > 80
-        fail ArgumentError, 'invalid value for "test_type", the character length must be smaller than or equal to 80.'
-      end
-
-      @test_type = test_type
-    end
-
-    # Custom attribute writer method with validation
     # @param [Object] naa_test_name Value to be assigned
     def naa_test_name=(naa_test_name)
-      if naa_test_name.nil?
-        fail ArgumentError, 'naa_test_name cannot be nil'
-      end
-
-      if naa_test_name.to_s.length > 80
+      if !naa_test_name.nil? && naa_test_name.to_s.length > 80
         fail ArgumentError, 'invalid value for "naa_test_name", the character length must be smaller than or equal to 80.'
       end
 
       @naa_test_name = naa_test_name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] test_manufacturer Value to be assigned
-    def test_manufacturer=(test_manufacturer)
-      if test_manufacturer.nil?
-        fail ArgumentError, 'test_manufacturer cannot be nil'
-      end
-
-      if test_manufacturer.to_s.length > 80
-        fail ArgumentError, 'invalid value for "test_manufacturer", the character length must be smaller than or equal to 80.'
-      end
-
-      @test_manufacturer = test_manufacturer
     end
 
     # Custom attribute writer method with validation
@@ -276,6 +262,24 @@ module DigitalCovidCertificateClient
       @test_centre = test_centre
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] sample_id Value to be assigned
+    def sample_id=(sample_id)
+      if sample_id.nil?
+        fail ArgumentError, 'sample_id cannot be nil'
+      end
+
+      if sample_id.to_s.length > 50
+        fail ArgumentError, 'invalid value for "sample_id", the character length must be smaller than or equal to 50.'
+      end
+
+      if sample_id.to_s.length < 1
+        fail ArgumentError, 'invalid value for "sample_id", the character length must be great than or equal to 1.'
+      end
+
+      @sample_id = sample_id
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -285,10 +289,12 @@ module DigitalCovidCertificateClient
           forename == o.forename &&
           date_of_birth == o.date_of_birth &&
           test_type == o.test_type &&
+          test_result == o.test_result &&
           naa_test_name == o.naa_test_name &&
           test_manufacturer == o.test_manufacturer &&
           sample_collection_time == o.sample_collection_time &&
-          test_centre == o.test_centre
+          test_centre == o.test_centre &&
+          sample_id == o.sample_id
     end
 
     # @see the `==` method
@@ -300,7 +306,7 @@ module DigitalCovidCertificateClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [surname, forename, date_of_birth, test_type, naa_test_name, test_manufacturer, sample_collection_time, test_centre].hash
+      [surname, forename, date_of_birth, test_type, test_result, naa_test_name, test_manufacturer, sample_collection_time, test_centre, sample_id].hash
     end
 
     # Builds the object from hash

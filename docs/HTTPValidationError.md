@@ -15,3 +15,4 @@ instance = DigitalCovidCertificateClient::HTTPValidationError.new(
   detail: null
 )
 ```
+

@@ -17,3 +17,4 @@ instance = DigitalCovidCertificateClient::CertificateResponse.new(
   report_html: &lt;h1&gt;Cert&lt;/h1&gt;...
 )
 ```
+

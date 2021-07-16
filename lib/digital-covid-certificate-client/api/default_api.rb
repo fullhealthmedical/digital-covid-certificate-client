@@ -19,8 +19,63 @@ module DigitalCovidCertificateClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Auth Check
+    # @param [Hash] opts the optional parameters
+    # @return [AnyType]
+    def auth_check_auth_get(opts = {})
+      data, _status_code, _headers = auth_check_auth_get_with_http_info(opts)
+      data
+    end
+
+    # Auth Check
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    def auth_check_auth_get_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.auth_check_auth_get ...'
+      end
+      # resource path
+      local_var_path = '/auth'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AnyType'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Auth']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.auth_check_auth_get",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#auth_check_auth_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create Covid Recovery Certificate
-    # @param recovery_qr_code [RecoveryQRCode]
+    # @param recovery_qr_code [RecoveryQRCode] 
     # @param [Hash] opts the optional parameters
     # @return [HC1CertificateResponse]
     def create_covid_recovery_certificate_covid_recovery_certificate_post(recovery_qr_code, opts = {})
@@ -29,7 +84,7 @@ module DigitalCovidCertificateClient
     end
 
     # Create Covid Recovery Certificate
-    # @param recovery_qr_code [RecoveryQRCode]
+    # @param recovery_qr_code [RecoveryQRCode] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(HC1CertificateResponse, Integer, Hash)>] HC1CertificateResponse data, response status code and response headers
     def create_covid_recovery_certificate_covid_recovery_certificate_post_with_http_info(recovery_qr_code, opts = {})
@@ -63,7 +118,7 @@ module DigitalCovidCertificateClient
       return_type = opts[:debug_return_type] || 'HC1CertificateResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['JWTBearer']
+      auth_names = opts[:debug_auth_names] || ['Auth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.create_covid_recovery_certificate_covid_recovery_certificate_post",
@@ -83,7 +138,7 @@ module DigitalCovidCertificateClient
     end
 
     # Create Covid Vaccine Certificate
-    # @param vaccine_qr_code [VaccineQRCode]
+    # @param vaccine_qr_code [VaccineQRCode] 
     # @param [Hash] opts the optional parameters
     # @return [HC1CertificateResponse]
     def create_covid_vaccine_certificate_covid_vaccine_certificate_post(vaccine_qr_code, opts = {})
@@ -92,7 +147,7 @@ module DigitalCovidCertificateClient
     end
 
     # Create Covid Vaccine Certificate
-    # @param vaccine_qr_code [VaccineQRCode]
+    # @param vaccine_qr_code [VaccineQRCode] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(HC1CertificateResponse, Integer, Hash)>] HC1CertificateResponse data, response status code and response headers
     def create_covid_vaccine_certificate_covid_vaccine_certificate_post_with_http_info(vaccine_qr_code, opts = {})
@@ -126,7 +181,7 @@ module DigitalCovidCertificateClient
       return_type = opts[:debug_return_type] || 'HC1CertificateResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['JWTBearer']
+      auth_names = opts[:debug_auth_names] || ['Auth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.create_covid_vaccine_certificate_covid_vaccine_certificate_post",
@@ -147,7 +202,7 @@ module DigitalCovidCertificateClient
 
     # Create Negative Covid Certificate
     # Create a government signed negative test covid certificate
-    # @param create_test_certificate [CreateTestCertificate]
+    # @param create_test_certificate [CreateTestCertificate] 
     # @param [Hash] opts the optional parameters
     # @return [CertificateResponse]
     def create_negative_covid_certificate_covid_test_certificate_post(create_test_certificate, opts = {})
@@ -157,7 +212,7 @@ module DigitalCovidCertificateClient
 
     # Create Negative Covid Certificate
     # Create a government signed negative test covid certificate
-    # @param create_test_certificate [CreateTestCertificate]
+    # @param create_test_certificate [CreateTestCertificate] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(CertificateResponse, Integer, Hash)>] CertificateResponse data, response status code and response headers
     def create_negative_covid_certificate_covid_test_certificate_post_with_http_info(create_test_certificate, opts = {})
@@ -191,7 +246,7 @@ module DigitalCovidCertificateClient
       return_type = opts[:debug_return_type] || 'CertificateResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['JWTBearer']
+      auth_names = opts[:debug_auth_names] || ['Auth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.create_negative_covid_certificate_covid_test_certificate_post",
@@ -267,8 +322,8 @@ module DigitalCovidCertificateClient
 
     # Login For Access Token
     # Retrieve an access token
-    # @param client_id [String]
-    # @param client_secret [String]
+    # @param client_id [String] 
+    # @param client_secret [String] 
     # @param [Hash] opts the optional parameters
     # @return [Token]
     def login_for_access_token_token_post(client_id, client_secret, opts = {})
@@ -278,8 +333,8 @@ module DigitalCovidCertificateClient
 
     # Login For Access Token
     # Retrieve an access token
-    # @param client_id [String]
-    # @param client_secret [String]
+    # @param client_id [String] 
+    # @param client_secret [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Token, Integer, Hash)>] Token data, response status code and response headers
     def login_for_access_token_token_post_with_http_info(client_id, client_secret, opts = {})

@@ -215,7 +215,7 @@ module DigitalCovidCertificateClient
     # Returns Auth Settings hash for api client.
     def auth_settings
       {
-        'JWTBearer' =>
+        'Auth' =>
           {
             type: 'bearer',
             in: 'header',

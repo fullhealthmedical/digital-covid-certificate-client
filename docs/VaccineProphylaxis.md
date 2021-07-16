@@ -12,3 +12,4 @@ require 'digital-covid-certificate-client'
 
 instance = DigitalCovidCertificateClient::VaccineProphylaxis.new()
 ```
+

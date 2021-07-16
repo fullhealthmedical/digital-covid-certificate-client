@@ -19,3 +19,4 @@ instance = DigitalCovidCertificateClient::ValidationError.new(
   type: null
 )
 ```
+

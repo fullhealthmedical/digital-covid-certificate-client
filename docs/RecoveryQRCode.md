@@ -12,7 +12,7 @@
 ## Example
 
 ```ruby
-require 'digital/covid/certificate/clientcertificate/client'
+require 'digital-covid-certificate-client'
 
 instance = DigitalCovidCertificateClient::RecoveryQRCode.new(
   ver: 1.3.0,

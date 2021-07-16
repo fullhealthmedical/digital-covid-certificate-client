@@ -11,32 +11,35 @@ OpenAPI Generator version: 5.1.1
 =end
 
 # Common files
-require 'digital_covid_certificate_client/api_client'
-require 'digital_covid_certificate_client/api_error'
-require 'digital_covid_certificate_client/version'
-require 'digital_covid_certificate_client/configuration'
+require 'digital-covid-certificate-client/api_client'
+require 'digital-covid-certificate-client/api_error'
+require 'digital-covid-certificate-client/version'
+require 'digital-covid-certificate-client/configuration'
 
 # Models
-require 'digital_covid_certificate_client/models/certificate_response'
-require 'digital_covid_certificate_client/models/country_vt'
-require 'digital_covid_certificate_client/models/create_test_certificate'
-require 'digital_covid_certificate_client/models/disease_agent_targeted'
-require 'digital_covid_certificate_client/models/hc1_certificate_response'
-require 'digital_covid_certificate_client/models/http_validation_error'
-require 'digital_covid_certificate_client/models/message'
-require 'digital_covid_certificate_client/models/qr_name'
-require 'digital_covid_certificate_client/models/qr_recovery'
-require 'digital_covid_certificate_client/models/qr_vaccine'
-require 'digital_covid_certificate_client/models/recovery_qr_code'
-require 'digital_covid_certificate_client/models/token'
-require 'digital_covid_certificate_client/models/vaccine_mah_manf'
-require 'digital_covid_certificate_client/models/vaccine_medicinal_product'
-require 'digital_covid_certificate_client/models/vaccine_prophylaxis'
-require 'digital_covid_certificate_client/models/vaccine_qr_code'
-require 'digital_covid_certificate_client/models/validation_error'
+require 'digital-covid-certificate-client/models/certificate_response'
+require 'digital-covid-certificate-client/models/country_vt'
+require 'digital-covid-certificate-client/models/create_test_certificate'
+require 'digital-covid-certificate-client/models/disease_agent_targeted'
+require 'digital-covid-certificate-client/models/hc1_certificate_response'
+require 'digital-covid-certificate-client/models/http_validation_error'
+require 'digital-covid-certificate-client/models/message'
+require 'digital-covid-certificate-client/models/qr_name'
+require 'digital-covid-certificate-client/models/qr_recovery'
+require 'digital-covid-certificate-client/models/qr_vaccine'
+require 'digital-covid-certificate-client/models/recovery_qr_code'
+require 'digital-covid-certificate-client/models/result_enum'
+require 'digital-covid-certificate-client/models/test_manf'
+require 'digital-covid-certificate-client/models/test_type'
+require 'digital-covid-certificate-client/models/token'
+require 'digital-covid-certificate-client/models/vaccine_mah_manf'
+require 'digital-covid-certificate-client/models/vaccine_medicinal_product'
+require 'digital-covid-certificate-client/models/vaccine_prophylaxis'
+require 'digital-covid-certificate-client/models/vaccine_qr_code'
+require 'digital-covid-certificate-client/models/validation_error'
 
 # APIs
-require 'digital_covid_certificate_client/api/default_api'
+require 'digital-covid-certificate-client/api/default_api'
 
 module DigitalCovidCertificateClient
   class << self

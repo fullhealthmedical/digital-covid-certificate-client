@@ -1,14 +1,80 @@
 # DigitalCovidCertificateClient::DefaultApi
 
-All URIs are relative to *https://test.digitalcovidcertificates.gov.ie*
+All URIs are relative to *https://api.test.digitalcovidcertificates.gov.ie*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**auth_check_auth_get**](DefaultApi.md#auth_check_auth_get) | **GET** /auth | Auth Check |
 | [**create_covid_recovery_certificate_covid_recovery_certificate_post**](DefaultApi.md#create_covid_recovery_certificate_covid_recovery_certificate_post) | **POST** /covid-recovery-certificate/ | Create Covid Recovery Certificate |
 | [**create_covid_vaccine_certificate_covid_vaccine_certificate_post**](DefaultApi.md#create_covid_vaccine_certificate_covid_vaccine_certificate_post) | **POST** /covid-vaccine-certificate/ | Create Covid Vaccine Certificate |
 | [**create_negative_covid_certificate_covid_test_certificate_post**](DefaultApi.md#create_negative_covid_certificate_covid_test_certificate_post) | **POST** /covid-test-certificate/ | Create Negative Covid Certificate |
 | [**health_check_health_check_get**](DefaultApi.md#health_check_health_check_get) | **GET** /health-check/ | Health Check |
 | [**login_for_access_token_token_post**](DefaultApi.md#login_for_access_token_token_post) | **POST** /token/ | Login For Access Token |
+
+
+## auth_check_auth_get
+
+> <AnyType> auth_check_auth_get
+
+Auth Check
+
+### Examples
+
+```ruby
+require 'time'
+require 'digital-covid-certificate-client'
+# setup authorization
+DigitalCovidCertificateClient.configure do |config|
+  # Configure Bearer authorization: Auth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = DigitalCovidCertificateClient::DefaultApi.new
+
+begin
+  # Auth Check
+  result = api_instance.auth_check_auth_get
+  p result
+rescue DigitalCovidCertificateClient::ApiError => e
+  puts "Error when calling DefaultApi->auth_check_auth_get: #{e}"
+end
+```
+
+#### Using the auth_check_auth_get_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AnyType>, Integer, Hash)> auth_check_auth_get_with_http_info
+
+```ruby
+begin
+  # Auth Check
+  data, status_code, headers = api_instance.auth_check_auth_get_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AnyType>
+rescue DigitalCovidCertificateClient::ApiError => e
+  puts "Error when calling DefaultApi->auth_check_auth_get_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AnyType**](AnyType.md)
+
+### Authorization
+
+[Auth](../README.md#Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 
 ## create_covid_recovery_certificate_covid_recovery_certificate_post
 
@@ -23,12 +89,12 @@ require 'time'
 require 'digital-covid-certificate-client'
 # setup authorization
 DigitalCovidCertificateClient.configure do |config|
-  # Configure Bearer authorization: JWTBearer
+  # Configure Bearer authorization: Auth
   config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = DigitalCovidCertificateClient::DefaultApi.new
-recovery_qr_code = DigitalCovidCertificateClient::RecoveryQRCode.new({ver: '1.3.0', nam: DigitalCovidCertificateClient::QRName.new({fn: 'Murphy Gunne', gn: 'Joseph', fnt: 'MURPHY<GUNNE', gnt: 'JOSEPH'}), dob: '1979-04-13', r: [DigitalCovidCertificateClient::QRRecovery.new({fr: Date.parse('Mon Jun 14 01:00:00 IST 2021'), df: Date.parse('Mon Jun 14 01:00:00 IST 2021'), du: Date.parse('Mon Jun 14 01:00:00 IST 2021'), tg: DigitalCovidCertificateClient::DiseaseAgentTargeted::N840539006, co: DigitalCovidCertificateClient::CountryVt::AD, is: 'Government of Ireland', ci: 'IE:123:TBA'})]}) # RecoveryQRCode |
+recovery_qr_code = DigitalCovidCertificateClient::RecoveryQRCode.new({ver: '1.3.0', nam: DigitalCovidCertificateClient::QRName.new({fn: 'Murphy Gunne', gn: 'Joseph', fnt: 'MURPHY<GUNNE', gnt: 'JOSEPH'}), dob: '1979-04-13', r: [DigitalCovidCertificateClient::QRRecovery.new({fr: Date.parse('Mon Jun 14 01:00:00 IST 2021'), df: Date.parse('Mon Jun 14 01:00:00 IST 2021'), du: Date.parse('Mon Jun 14 01:00:00 IST 2021'), tg: DigitalCovidCertificateClient::DiseaseAgentTargeted::N840539006, co: DigitalCovidCertificateClient::CountryVt::AD, is: 'Department of Health', ci: 'IE:123:TBA'})]}) # RecoveryQRCode |
 
 begin
   # Create Covid Recovery Certificate
@@ -69,12 +135,13 @@ end
 
 ### Authorization
 
-[JWTBearer](../README.md#JWTBearer)
+[Auth](../README.md#Auth)
 
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ## create_covid_vaccine_certificate_covid_vaccine_certificate_post
 
@@ -89,12 +156,12 @@ require 'time'
 require 'digital-covid-certificate-client'
 # setup authorization
 DigitalCovidCertificateClient.configure do |config|
-  # Configure Bearer authorization: JWTBearer
+  # Configure Bearer authorization: Auth
   config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = DigitalCovidCertificateClient::DefaultApi.new
-vaccine_qr_code = DigitalCovidCertificateClient::VaccineQRCode.new({ver: '1.3.0', nam: DigitalCovidCertificateClient::QRName.new({fn: 'Murphy Gunne', gn: 'Joseph', fnt: 'MURPHY<GUNNE', gnt: 'JOSEPH'}), dob: '1979-04-13', v: [DigitalCovidCertificateClient::QRVaccine.new({tg: DigitalCovidCertificateClient::DiseaseAgentTargeted::N840539006, vp: DigitalCovidCertificateClient::VaccineProphylaxis::N1119349007, mp: DigitalCovidCertificateClient::VaccineMedicinalProduct::EU_1_20_1528, ma: DigitalCovidCertificateClient::VaccineMahManf::ORG_100001699, dn: 1, sd: 2, dt: Date.parse('Mon Jun 14 01:00:00 IST 2021'), co: DigitalCovidCertificateClient::CountryVt::AD, is: 'Government of Ireland', ci: 'IE:123:TBA'})]}) # VaccineQRCode |
+vaccine_qr_code = DigitalCovidCertificateClient::VaccineQRCode.new({ver: '1.3.0', nam: DigitalCovidCertificateClient::QRName.new({fn: 'Murphy Gunne', gn: 'Joseph', fnt: 'MURPHY<GUNNE', gnt: 'JOSEPH'}), dob: '1979-04-13', v: [DigitalCovidCertificateClient::QRVaccine.new({tg: DigitalCovidCertificateClient::DiseaseAgentTargeted::N840539006, vp: DigitalCovidCertificateClient::VaccineProphylaxis::N1119349007, mp: DigitalCovidCertificateClient::VaccineMedicinalProduct::EU_1_20_1528, ma: DigitalCovidCertificateClient::VaccineMahManf::ORG_100001699, dn: 1, sd: 2, dt: Date.parse('Mon Jun 14 01:00:00 IST 2021'), co: DigitalCovidCertificateClient::CountryVt::AD, is: 'Department of Health', ci: 'IE:123:TBA'})]}) # VaccineQRCode |
 
 begin
   # Create Covid Vaccine Certificate
@@ -135,12 +202,13 @@ end
 
 ### Authorization
 
-[JWTBearer](../README.md#JWTBearer)
+[Auth](../README.md#Auth)
 
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ## create_negative_covid_certificate_covid_test_certificate_post
 
@@ -157,12 +225,12 @@ require 'time'
 require 'digital-covid-certificate-client'
 # setup authorization
 DigitalCovidCertificateClient.configure do |config|
-  # Configure Bearer authorization: JWTBearer
+  # Configure Bearer authorization: Auth
   config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = DigitalCovidCertificateClient::DefaultApi.new
-create_test_certificate = DigitalCovidCertificateClient::CreateTestCertificate.new({surname: 'Murphy', forename: 'Joseph', date_of_birth: '1979-04-13', test_type: 'LP6464-4', naa_test_name: 'naa_test_name_example', test_manufacturer: '1833', sample_collection_time: Time.parse('2021-06-14T23:03:34Z'), test_centre: 'UCD Campus testing'}) # CreateTestCertificate |
+create_test_certificate = DigitalCovidCertificateClient::CreateTestCertificate.new({surname: 'Murphy', forename: 'Joseph', date_of_birth: '1979-04-13', test_type: DigitalCovidCertificateClient::TestType::LP6464_4, test_result: DigitalCovidCertificateClient::ResultEnum::NEGATIVE, sample_collection_time: Time.parse('2021-06-14T23:03:34Z'), test_centre: 'UCD Campus testing', sample_id: '4de53be4-94c3-4f9f-8348-66d352978c90'}) # CreateTestCertificate |
 
 begin
   # Create Negative Covid Certificate
@@ -203,12 +271,13 @@ end
 
 ### Authorization
 
-[JWTBearer](../README.md#JWTBearer)
+[Auth](../README.md#Auth)
 
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ## health_check_health_check_get
 
@@ -267,6 +336,7 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ## login_for_access_token_token_post
 
@@ -332,3 +402,4 @@ No authorization required
 
 - **Content-Type**: application/x-www-form-urlencoded
 - **Accept**: application/json
+
