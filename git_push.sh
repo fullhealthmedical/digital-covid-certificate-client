@@ -1,7 +1,7 @@
 #!/bin/sh
 # ref: https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
 #
-# Usage example: /bin/sh ./git_push.sh wing328 openapi-pestore-perl "minor update" "gitlab.com"
+# Usage example: /bin/sh ./git_push.sh wing328 openapi-petstore-perl "minor update" "gitlab.com"
 
 fullhealthmedical=$1
 digital-covid-certificate-client=$2
@@ -38,7 +38,7 @@ git add .
 git commit -m "$release_note"
 
 # Sets the new remote
-git_remote=`git remote`
+git_remote=$(git remote)
 if [ "$git_remote" = "" ]; then # git remote not defined
 
     if [ "$GIT_TOKEN" = "" ]; then
@@ -55,4 +55,3 @@ git pull origin master
 # Pushes (Forces) the changes in the local repository up to the remote repository
 echo "Git pushing to https://${git_host}/${fullhealthmedical}/${digital-covid-certificate-client}.git"
 git push origin master 2>&1 | grep -v 'To https'
-
