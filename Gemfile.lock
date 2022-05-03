@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    digital-covid-certificate-client (1.0.0)
+    digital-covid-certificate-client (3.0.0)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
@@ -11,9 +11,9 @@ GEM
     byebug (11.1.3)
     coderay (1.1.3)
     diff-lcs (1.4.4)
-    ethon (0.14.0)
+    ethon (0.15.0)
       ffi (>= 1.15.0)
-    ffi (1.15.3)
+    ffi (1.15.5)
     jaro_winkler (1.5.4)
     method_source (1.0.0)
     parallel (1.20.1)
@@ -56,6 +56,7 @@ GEM
 
 PLATFORMS
   -darwin-20
+  arm64-darwin-21
 
 DEPENDENCIES
   digital-covid-certificate-client!

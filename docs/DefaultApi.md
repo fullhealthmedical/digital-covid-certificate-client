@@ -14,7 +14,7 @@ All URIs are relative to *https://api.test.digitalcovidcertificates.gov.ie*
 
 ## auth_check_auth_get
 
-> <AnyType> auth_check_auth_get
+> Object auth_check_auth_get
 
 Auth Check
 
@@ -44,7 +44,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AnyType>, Integer, Hash)> auth_check_auth_get_with_http_info
+> <Array(Object, Integer, Hash)> auth_check_auth_get_with_http_info
 
 ```ruby
 begin
@@ -52,7 +52,7 @@ begin
   data, status_code, headers = api_instance.auth_check_auth_get_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <AnyType>
+  p data # => Object
 rescue DigitalCovidCertificateClient::ApiError => e
   puts "Error when calling DefaultApi->auth_check_auth_get_with_http_info: #{e}"
 end
@@ -64,7 +64,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 
@@ -161,7 +161,7 @@ DigitalCovidCertificateClient.configure do |config|
 end
 
 api_instance = DigitalCovidCertificateClient::DefaultApi.new
-vaccine_qr_code = DigitalCovidCertificateClient::VaccineQRCode.new({ver: '1.3.0', nam: DigitalCovidCertificateClient::QRName.new({fn: 'Murphy Gunne', gn: 'Joseph', fnt: 'MURPHY<GUNNE', gnt: 'JOSEPH'}), dob: '1979-04-13', v: [DigitalCovidCertificateClient::QRVaccine.new({tg: DigitalCovidCertificateClient::DiseaseAgentTargeted::N840539006, vp: DigitalCovidCertificateClient::VaccineProphylaxis::N1119349007, mp: DigitalCovidCertificateClient::VaccineMedicinalProduct::EU_1_20_1528, ma: DigitalCovidCertificateClient::VaccineMahManf::ORG_100001699, dn: 1, sd: 2, dt: Date.parse('Mon Jun 14 01:00:00 IST 2021'), co: DigitalCovidCertificateClient::CountryVt::AD, is: 'Department of Health', ci: 'IE:123:TBA'})]}) # VaccineQRCode |
+vaccine_qr_code = DigitalCovidCertificateClient::VaccineQRCode.new({ver: '1.3.0', nam: DigitalCovidCertificateClient::QRName.new({fn: 'Murphy Gunne', gn: 'Joseph', fnt: 'MURPHY<GUNNE', gnt: 'JOSEPH'}), dob: '1979-04-13', v: [DigitalCovidCertificateClient::QRVaccine.new({tg: DigitalCovidCertificateClient::DiseaseAgentTargeted::N840539006, vp: DigitalCovidCertificateClient::VaccineProphylaxis::N1119305005, mp: DigitalCovidCertificateClient::VaccineMedicinalProduct::EU_1_20_1528, ma: DigitalCovidCertificateClient::VaccineMahManf::ORG_100001699, dn: 1, sd: 2, dt: Date.parse('Mon Jun 14 01:00:00 IST 2021'), co: DigitalCovidCertificateClient::CountryVt::AD, is: 'Department of Health', ci: 'IE:123:TBA'})]}) # VaccineQRCode |
 
 begin
   # Create Covid Vaccine Certificate
@@ -281,7 +281,7 @@ end
 
 ## health_check_health_check_get
 
-> <AnyType> health_check_health_check_get
+> Object health_check_health_check_get
 
 Health Check
 
@@ -306,7 +306,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AnyType>, Integer, Hash)> health_check_health_check_get_with_http_info
+> <Array(Object, Integer, Hash)> health_check_health_check_get_with_http_info
 
 ```ruby
 begin
@@ -314,7 +314,7 @@ begin
   data, status_code, headers = api_instance.health_check_health_check_get_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <AnyType>
+  p data # => Object
 rescue DigitalCovidCertificateClient::ApiError => e
   puts "Error when calling DefaultApi->health_check_health_check_get_with_http_info: #{e}"
 end
@@ -326,7 +326,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 
@@ -344,7 +344,7 @@ No authorization required
 
 Login For Access Token
 
-Retrieve an access token
+Retrieve an Access Token of type Bearer to access the API endpoints.  To access the API enpoints, the client must send the access token in the Authorization header when making requests:      Authorization: Bearer <access_token>  More info in [MDN Web Docs: Authorization](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization).
 
 ### Examples
 
